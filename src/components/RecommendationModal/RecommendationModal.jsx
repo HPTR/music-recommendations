@@ -10,7 +10,7 @@ const RecommendationModal = ({show, onClose}) => {
                 <h4 className='recommendation-modal__title'>Header Content/title</h4>
             </div>
             <div className="recommendation-modal__body">
-                Content goes here
+            <iframe title="if-you-wanna" style={{'borderRadius':'12px'}} src="https://open.spotify.com/embed/track/6Ca3uEAuun3HusTUiIXKs1?utm_source=generator" width="100%" height="80" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
             </div>
             <div className='recommendation-modal__footer'>
                 <button onClick={onClose}>Close</button>
