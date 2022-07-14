@@ -1,0 +1,45 @@
+.recommendation {
+    
+    width: 300px;
+    height: 300px;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+
+    // overflow: hidden;
+
+    &__image {
+        
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        opacity: 0;
+        transition: all 0.2s ease-in-out;
+        color: white;
+    }
+
+    &__title {
+
+    }
+
+    &__artist {
+
+    }
+
+    &__album {
+
+    }
+
+    &:hover &__info {
+        opacity: 1;
+    }
+
+    &:hover &__image {
+        filter: brightness(30%);
+    }
+}
