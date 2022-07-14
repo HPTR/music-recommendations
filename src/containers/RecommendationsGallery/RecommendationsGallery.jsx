@@ -12,10 +12,18 @@ const RecommendationsGallery = () => {
 
 
   return (
-    <div>
-        <h1>HELLO</h1>
+    <div className='recommendations-gallery'>
         <button onClick={toggleModal} >Modal</button>
         <RecommendationModal show={show} onClose={toggleModal} />
+        {
+          songArray.map((item) => {
+            return (
+            <div className="recommendations-gallery_recommendation">
+              <Recommendation key={item.id} title={item.songName} artist={item.artistName} album={item.albumName} image={item.image} />
+            </div>
+            )
+          })
+        }
     </div>
   )
 }
