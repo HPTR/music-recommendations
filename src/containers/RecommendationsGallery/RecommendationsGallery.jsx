@@ -1,33 +1,41 @@
 import React from 'react'
 import RecommendationModal from '../../components/RecommendationModal/RecommendationModal';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import songArray from "../../assets/data/DummySongData";
 import Recommendation from '../../components/Recommendation/Recommendation';
 import "./RecommendationsGallery.scss";
 
 const RecommendationsGallery = () => {
 
-    const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
+  const [modal, setModal] = useState(0);
+  const [songProp, setSongProp] = useState(songArray[0]);
 
-    const toggleModal = () => {
-      setShow(!show);
-    }
+  const toggleModal = () => {
+    setShow(!show);
+  }
 
-    //To give the modal different information, maybe use state to grab the info needed and give it a prop
+  const onClick = (event) => {
+    setModal(Number(event.target.id));
+    toggleModal();
+  }
+
+  useEffect(() => {
+    setSongProp(songArray[modal])
+  }, [modal])
 
   return (
     <div className='recommendations-gallery'>
-        <button onClick={toggleModal} >Modal</button>
-        <RecommendationModal show={show} onClose={toggleModal} />
-        {
-          songArray.map((item) => {
-            return (
-            <div className="recommendations-gallery_recommendation">
-              <Recommendation key={item.id} title={item.songName} artist={item.artistName} album={item.albumName} image={item.image} />
+      <RecommendationModal show={show} onClose={toggleModal} song={songProp} />
+      {
+        songArray.map((item) => {
+          return (
+            <div key={item.id} className="recommendations-gallery__recommendation" onClick={onClick}>
+              <Recommendation id={item.id} onClick={onClick} title={item.songName} artist={item.artistName} album={item.albumName} image={item.image} />
             </div>
-            )
-          })
-        }
+          )
+        })
+      }
     </div>
   )
 }
