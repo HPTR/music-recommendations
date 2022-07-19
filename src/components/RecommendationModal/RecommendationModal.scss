@@ -5,31 +5,45 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.2s ease-in-out;
     pointer-events: none;
+    z-index: 2;
 
     &.show {
         opacity: 1;
         pointer-events: visible;
     }
 
-    &__header, &__footer {
-        padding: 10px;
-    }
-
     &__content {
         width: 500px;
         background-color: #FFFFFF;
+        padding: 30px;
+        border-radius: 50px;
+        box-shadow: 0px 20px 600px black;
     }
 
     &__body {
         padding: 10px;
-        border-top: 1px solid #EEEEEE;
-        border-bottom: 1px solid #EEEEEE;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+    }
+
+    &__image {
+        width: 150px;
+        height: 150px;
+        margin-right: 20px;
+    }
+
+    &__review {
+        margin: 20px;
+        text-align: left;
     }
 }
 

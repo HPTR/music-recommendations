@@ -1,21 +1,26 @@
 import React from 'react'
 import "./RecommendationModal.scss"
 
-const RecommendationModal = ({show, onClose}) => {
+const RecommendationModal = ({ show, onClose, song }) => {
+
+  const { songName, artistName, albumName, image, spotifyEmbed, review } = song;
 
   return (
     <div className={`recommendation-modal ${show ? 'show' : ''}`} onClick={onClose}>
-        <div className='recommendation-modal__content' onClick={e => e.stopPropagation()}>
-            <div className="recommendation-modal__header">
-                <h4 className='recommendation-modal__title'>Header Content/title</h4>
-            </div>
-            <div className="recommendation-modal__body">
-            <iframe title="if-you-wanna" style={{'borderRadius':'12px'}} src="https://open.spotify.com/embed/track/6Ca3uEAuun3HusTUiIXKs1?utm_source=generator" width="100%" height="80" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-            </div>
-            <div className='recommendation-modal__footer'>
-                <button onClick={onClose}>Close</button>
-            </div>
+      <div className='recommendation-modal__content' onClick={e => e.stopPropagation()}>
+        <div className="recommendation-modal__body">
+          <img src={image} className="recommendation-modal__image" alt={image}/>
+          <div className="recommendation-modal__details">
+            <h2 className="recommendation-modal__title">{songName}</h2>
+            <h3 className="recommendation-modal__artist">{artistName}</h3>
+            <h4 className="recommendation-modal__album">{albumName}</h4>
+          </div>
         </div>
+        <div className='recommendation-modal__review'>
+          {review}
+        </div>
+        {spotifyEmbed}
+      </div>
     </div>
   )
 }
